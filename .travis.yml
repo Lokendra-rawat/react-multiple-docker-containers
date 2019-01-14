@@ -1,0 +1,23 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t loki194/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run loki194/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t loki194/multi-client ./client
+  - docker build -t loki194/multi-nginx ./nginx
+  - docker build -t loki194/multi-server ./server
+  - docker build -t loki194/multi-worker ./worker
+
+  # take these images and push to the docker-hub
+  
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push loki194/multi-client
+  - docker push loki194/multi-nginx
+  - docker push loki194/multi-server
+  - docker push loki194/multi-worker
