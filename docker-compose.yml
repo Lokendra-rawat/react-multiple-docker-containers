@@ -26,7 +26,7 @@ services:
       - PGHOST=postgres
       - PGDATABASE=postgres
       - PGPASSWORD=postgres_password
-      - pgPort=5432
+      - PGPORT=5432
   client:
     build:
       dockerfile: Dockerfile.dev
