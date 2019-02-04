@@ -4,10 +4,12 @@ const keys = require('./keys')
 
 const express = require('express')
 const bodyParser = require('body-parser')
+// var logger = require('morgan');
 const cors = require('cors')
 
 const app = express()
 app.use(cors())
+// app.use(logger('dev'));
 app.use(bodyParser.json())
 
 // Pg client setup

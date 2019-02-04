@@ -17,7 +17,7 @@ class App extends Component {
               Edit <code>src/App.js</code> and save to reload.
           </p> */}
             <Link to="/"> home </Link>
-            <Link to="/otherpage"> otherpage </Link>
+            <Link to="/otherpage"> other page </Link>
 
             <div>
               <Route exact path="/" component={Fib} />
